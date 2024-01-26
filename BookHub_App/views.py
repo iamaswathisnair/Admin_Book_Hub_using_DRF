@@ -22,7 +22,7 @@ def login_admin(request):
              
              #end
              
-             return render(request,'dashboard.html')
+             return render(request,'Author_listing.html')
         
         else:
              error_message="Invalid credentials"
@@ -36,4 +36,9 @@ def home(request):
         return render(request,'Author_listing.html')
 def books(request):
         return render(request,'Books_listing.html')
-    
+def add_author(request):
+        return render(request,'Books_listing.html')
+def add_books(request):
+        return render(request,'Books_listing.html')
+def author_details_view(request):
+        return render(request,'Books_listing.html')

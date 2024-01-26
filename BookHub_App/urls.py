@@ -23,6 +23,11 @@ urlpatterns = [
     path('login_admin/',views.login_admin,name='login_admin'),
     path('home/',views.home,name='home'),
     path('books/',views.books,name='books'),
+    path('add_author/',views.add_author,name='add_author'),
+    path('add_books/',views.add_books,name='add_books'),
+    path('author_details_view/',views.author_details_view,name='author_details_view'),
+
+    
     
     
 ]

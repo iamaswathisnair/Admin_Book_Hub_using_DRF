@@ -9,11 +9,11 @@ class Admin_log(models.Model):
     def __str__(self):
         return self.username
 
+
 class Authors(models.Model):
     author_name = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     email = models.EmailField()
-
 
     def __str__(self):
         return self.author_name
