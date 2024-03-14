@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+    <title>Dashboard</title>
+    
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Dashboard</h2>
+    <a href="/home/">Authors</a>
+    <a href="/books/">Books</a>
+    <a href="/login_admin/">Logout</a>
+</div>
+
+<div class="main-content" id="mainContent">
+    <h2>Books</h2>
+     
+    <div class="search-container">
+        <div class="searchBox">
+            <form action="" method="post">
+    {% csrf_token %}
+    <input class="searchInput" type="text" name="name" placeholder="Search" required>
+    <button type="submit" class="searchButton">
+        <i class="material-icons">
+            search
+        </i>
+    </button>
+    <center>
+        <h4>
+            {{msge}}  
+            {% if msge %}
+            &#x1F641;
+            {% endif %}
+        </h4>
+    </center>
+</form>
+        </div>
+        <a href="/add_author/" class="add-btn">Add Author</a>
+    </div> 
+    
+    <div class="authorInfo">
+        <p><strong>Author Name:</strong> {{author_name}}</p>
+        <p><strong>Username:</strong> {{username}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Book Name</th>
+            <th>Book Id</th>
+            <th>Created Date</th>
+            <!-- <th>Actions</th> -->
+        </tr>
+        </thead>
+        {% for book in books %}
+        <tr>
+            <td>{{ forloop.counter }}</td> 
+            <td>{{ book.book_name }}</td>
+            <td>{{ book.book_id}}</td>
+
+            <td>{{ book.created_date }}</td>
+          
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="table-actions"></div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+

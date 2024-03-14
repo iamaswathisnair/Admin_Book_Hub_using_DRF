@@ -40,12 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BookHub_App',
     'rest_framework',
+    'django_filters',
     'corsheaders',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer',  
+    ],
+    
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
+    
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

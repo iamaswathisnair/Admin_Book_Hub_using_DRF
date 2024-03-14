@@ -19,25 +19,23 @@
 </div>
 
 <div class="main-content" id="mainContent">
-    <h2>Authors</h2>
+    <!-- <h2></h2> -->
     <div class="search-container">
         <div class="searchBox">
-            <form action="/search_authors/" method="post">
+            <!-- <form action="/search_authors/" method="post">
                 {% csrf_token %}
-            <input class="searchInput" type="text" name="name" placeholder="Search Authors" required>
+            <input class="searchInput" type="text" name="name" placeholder="Search">
             <button  type="submit" class="searchButton">
                 <i class="material-icons">
                     search
                 </i>
             </button>
-           
-        </form>
+        </form> -->
         </div>
         <a href="/add_author/" class="add-btn">Add Author</a>
     </div> 
     
     
-
     <table>
         <thead>
         <tr>
@@ -48,7 +46,7 @@
             <th>Actions</th>
         </tr>
         </thead>
-        {% for i in authors_list %}
+        {% for i in data %}
         <tbody>
         <td>{{forloop.counter}}</td> 
          <td>{{i.author_name}}</td>
@@ -65,21 +63,11 @@
          </td>
         </tbody>
         {% endfor %}
+   
     </table>
-    <center>
-        <h2>
-        {{msge}}  
-        {% if msge %}
-        &#x1F641;
-        {% endif %}
-       </h2>
-    </center>
-
-
-
-    
     <div class="table-actions"></div>
 </div>
+
 
 
 

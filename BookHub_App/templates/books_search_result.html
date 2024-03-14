@@ -7,7 +7,7 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
     <title>Dashboard</title>
-   
+    
 </head>
 <body>
 
@@ -15,56 +15,55 @@
     <h2>Dashboard</h2>
     <a href="/home/">Authors</a>
     <a href="/books/">Books</a>
-    <a href="/login_admin/">Logout</a>
+    <a href="login_admin">Logout</a>
 </div>
 
 <div class="main-content" id="mainContent">
-    <h2>Authors</h2>
+    <h2>Books</h2>
+     
     <div class="search-container">
         <div class="searchBox">
-            <form action="/search_authors/" method="post">
-                {% csrf_token %}
-            <input class="searchInput" type="text" name="name" placeholder="Search Authors" required>
+            <!-- <form action="/author_search_sesult/" method="post">
+            <input class="searchInput" type="text" name="name" placeholder="Search">
             <button  type="submit" class="searchButton">
                 <i class="material-icons">
                     search
                 </i>
             </button>
-           
-        </form>
+        </form> -->
         </div>
-        <a href="/add_author/" class="add-btn">Add Author</a>
+        <a href="/add_books/" class="add-btn">Add Book</a>
     </div> 
-    
-    
-
     <table>
         <thead>
         <tr>
             <th>No</th>
             <th>Author Name</th>
-            <th>Username</th>
-            <th>Email</th>
+            <th>Book Name</th>
+            <th>Created Date</th>
             <th>Actions</th>
         </tr>
         </thead>
-        {% for i in authors_list %}
         <tbody>
+
+        {% for i in data %}
+
         <td>{{forloop.counter}}</td> 
-         <td>{{i.author_name}}</td>
-         <td>{{i.username}}</td>
-         <td>{{i.email}}</td>
+         <td>{{i.author}}</td>
+         <td>{{i.book_name}}</td>
+         <td>{{i.created_date}}</td>
          <td>
             <div class="action-links">
-            <a href="/author_edit/{{i.id}}">✏️</a>
-            <a href="/author_details_view/{{i.id}}">👁️</a>
-            <a href="/author_delete/{{i.id}}">🗑️</a>
+            <a href="/book_edit/{{i.book_id}}">✏️</a>
+            <a href="/author_book_delete/{{i.book_id}}">🗑️</a>
         
         </div>
       
          </td>
         </tbody>
         {% endfor %}
+        
+
     </table>
     <center>
         <h2>
@@ -74,12 +73,9 @@
         {% endif %}
        </h2>
     </center>
-
-
-
-    
     <div class="table-actions"></div>
 </div>
+
 
 
 

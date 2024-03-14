@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-    <title>add author</title>
+    <title>add Books</title>
 <style>
 
 
@@ -11,7 +11,7 @@
         margin-top: 150px;
         padding: 0;
         display: flex;
-        height: 70vh;
+        height: 44vh;
         overflow: hidden;
     }
 
@@ -27,19 +27,14 @@ input[type=text],  input[type=email]{
 }
 
 button[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
+ 
+  background-color: rgb(8, 8, 8);
   color: white;
-  padding: 14px 20px;
+  padding: 15px 85px;
   margin: 8px 0;
   border: none;
-  text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
-}
-button[type=submit] a {
-  text-decoration: none;
-  color: inherit;
 }
 
 input[type=submit]:hover {
@@ -58,23 +53,23 @@ div {
 
 
 <div>
+  <h2>Edit book Here!</h2>
+
+  <form name="myform" action="/book_edit_update/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ id }}">
+    <input type="text" value="{{ author_name }}" name="authorname" readonly>
+    <input type="text" value="{{ book_name }}" name="bookname">
+    <div class="button-container">
+        <button type="submit">Cancel</button>
+        <button type="submit">Add</button>
+    </div>
+</form>
 
 
 
-    <h2>Add Author Here!</h2>
-    <form name="myform" action="/add_author/" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder="Author Name:" name="name" required>
-        <input type="text" placeholder="Username" name="username" required>
-        <input type="email" placeholder="Email" name="email" required>
-    
-        <div class="button-container">
-            <!-- <button type="submit">Cancel</button> -->
-          <button type="submit"><a href="/home/">Cancel</a></button></a>
 
-            <button type="submit">Add</button>
-        </div>
-    </form>
+   
 
     {% if error_message %}
     <p style="color: red;">{{error_message}}</p>

@@ -1,1 +1,88 @@
-<h1>hei</h1>
+
+
+
+<!DOCTYPE html>
+<html>
+    <title>add author</title>
+<style>
+
+
+    body {
+        font-family: Arial, sans-serif;
+        margin-left: 28%;
+        margin-top: 150px;
+        padding: 0;
+        display: flex;
+        height: 70vh;
+        overflow: hidden;
+    }
+
+
+input[type=text],  input[type=email]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=submit] a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+
+
+<div>
+
+
+    <h2>Add Books Here!</h2>
+    <form name="myform" action="/add_books/" method="post">
+        {% csrf_token %}
+
+        
+        <input type="text" placeholder="Author Name:" name="author_name" required>
+        <input type="text" placeholder="Book Name" name="bookname" required>
+    
+        <div class="button-container">
+            <button type="submit"><a href="/home/">Cancel</a></button>
+            <button type="submit">Add</button>
+        </div>
+    </form>
+    
+    {% if error_message %}
+        <p style="color: red;">{{error_message}}</p>
+    {% endif %}
+    
+</div>
+
+</body>
+</html>
+
+
